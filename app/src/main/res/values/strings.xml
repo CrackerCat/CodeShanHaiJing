@@ -1,8 +1,20 @@
 <resources>
     <string name="app_name">CodeShanHaiJing</string>
+    <string name="app_description">A Phil Locke Work</string>
 
+    <string name="hint_ungenerate">空空如也</string>
+    <string name="hint_ungenerate_pinyin">KongKongRuYe</string>
+    <string name="random_generate">随机生成</string>
+
+    <string name="menu_item_generate">随机生成</string>
+    <string name="menu_item_used_name">已使用名称</string>
+    <string name="menu_item_unused_name">未使用名称</string>
+    <string name="menu_catagory_more">更多</string>
+    <string name="menu_item_about">关于</string>
+
+    <string name="action_settings">设置</string>
+
+    <!--auto generated content-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
 </resources>
