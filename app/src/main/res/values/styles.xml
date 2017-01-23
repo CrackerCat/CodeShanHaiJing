@@ -24,10 +24,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">10dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">60sp</item>
+        <item name="android:textSize">70sp</item>
     </style>
 
     <style name="Text.Result.Pinyin">
-        <item name="android:textSize">40sp</item>
+        <item name="android:textSize">45sp</item>
     </style>
 </resources>
