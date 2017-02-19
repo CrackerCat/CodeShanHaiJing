@@ -29,4 +29,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(":datasource")
     compile project(":model")
+    compile 'com.github.SilenceDut:jpinyin:v1.0'
 }

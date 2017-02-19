@@ -1,6 +1,11 @@
 package com.nocompanyyet;
 
 import android.content.Context;
+import android.text.TextUtils;
+
+import com.github.stuxuhai.jpinyin.PinyinException;
+import com.github.stuxuhai.jpinyin.PinyinFormat;
+import com.github.stuxuhai.jpinyin.PinyinHelper;
 
 import java.util.Random;
 
@@ -41,6 +46,25 @@ public class ShanHaiJingBusiness implements IShanHaiJingBusiness {
         }
         ShanHaiJingChapter chapter = mShanHaiJing.getChapters().get(chapterNumber);
         int thingNumber = random.nextInt(chapter.getThings().size() - 1);
-        return chapter.getThings().get(thingNumber);
+        ShanHaiJingThing thing = chapter.getThings().get(thingNumber);
+        if (TextUtils.isEmpty(thing.getPinyin())) {
+            try {
+                String oriPinyin = PinyinHelper.convertToPinyinString(thing.getName(), ",", PinyinFormat.WITH_TONE_MARK);
+                String[] pinyinSet = oriPinyin.split(",");
+                for (int i = 0; i < pinyinSet.length; i++) {
+                    String p = pinyinSet[i];
+                    p = p.replaceFirst(p.substring(0, 1), p.substring(0, 1).toUpperCase());
+                    pinyinSet[i] = p;
+                }
+                StringBuilder pinyinBuilder = new StringBuilder();
+                for (String p : pinyinSet) {
+                    pinyinBuilder.append(p);
+                }
+                thing.setPinyin(pinyinBuilder.toString());
+            } catch (PinyinException e) {
+                e.printStackTrace();
+            }
+        }
+        return thing;
     }
 }
