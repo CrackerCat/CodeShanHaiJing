@@ -15,14 +15,14 @@
     tools:showIn="@layout/app_bar_main">
 
     <TextView
-        android:id="@+id/text_result"
-        style="@style/Text.Result"
+        android:id="@+id/text_result_name"
+        style="@style/Text.Result.Name"
         android:hint="@string/hint_ungenerate"/>
 
     <TextView
         android:id="@+id/text_result_pinyin"
         style="@style/Text.Result.Pinyin"
-        android:layout_below="@id/text_result"
+        android:layout_below="@id/text_result_name"
         android:hint="@string/hint_ungenerate_pinyin"/>
 
     <Button

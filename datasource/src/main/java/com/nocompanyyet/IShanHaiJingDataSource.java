@@ -6,4 +6,5 @@ package com.nocompanyyet;
  */
 
 interface IShanHaiJingDataSource {
+    ShanHaiJing getShanHaiJing();
 }

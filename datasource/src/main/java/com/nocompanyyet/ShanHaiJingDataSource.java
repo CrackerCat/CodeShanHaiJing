@@ -74,6 +74,7 @@ public class ShanHaiJingDataSource extends AbstractShanHaiJingDataSource {
         mShanHaiJing = JSONObject.parseObject(shjJsonString, ShanHaiJing.class);
     }
 
+    @Override
     public ShanHaiJing getShanHaiJing() {
         return mShanHaiJing;
     }

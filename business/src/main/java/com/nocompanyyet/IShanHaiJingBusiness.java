@@ -6,4 +6,10 @@ package com.nocompanyyet;
  */
 
 public interface IShanHaiJingBusiness {
+    /**
+     * 随机选取一个ShanHaiJingThing
+     *
+     * @return
+     */
+    ShanHaiJingThing getAThingRandomly();
 }
