@@ -6,9 +6,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.nocompanyyet.datasource.R;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import static com.nocompanyyet.base.Constant.LOCAL_DATA_FILE_PATH;
 
 /**
  * 数据源功能实现
@@ -56,20 +59,28 @@ public class ShanHaiJingDataSource extends AbstractShanHaiJingDataSource {
      * 新建数据源
      */
     private void newDataSource() {
-        // 从raw文件读取数据
-        InputStream is = mContext.getResources().openRawResource(R.raw.shanhaijing_datasource_original);
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        StringBuilder total = new StringBuilder();
-        String line;
-        try {
-            while ((line = br.readLine()) != null) {
-                total.append(line);
+        String shjJsonString;
+        File file = FileUtil.newExternalFile(LOCAL_DATA_FILE_PATH);
+        // 如果有本地文件，从文地文件获取数据
+        if (file.exists()) {
+            shjJsonString = FileUtil.read(file);
+        } else {
+            // 从raw文件读取数据
+            InputStream is = mContext.getResources().openRawResource(R.raw.shanhaijing_datasource_original);
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            StringBuilder total = new StringBuilder();
+            String line;
+            try {
+                while ((line = br.readLine()) != null) {
+                    total.append(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String shjJsonString = total.toString().replace(" ", "");
+            shjJsonString = total.toString().replace(" ", "");
 
+            FileUtil.write(file, shjJsonString);
+        }
         // 转换成jsonobject进行解析
         mShanHaiJing = JSONObject.parseObject(shjJsonString, ShanHaiJing.class);
     }

@@ -6,4 +6,6 @@ package com.nocompanyyet.base;
  */
 
 public class Constant {
+    public static String PACKAGE_NAME = "com.nocompanyyet.codeshanhaijing";
+    public static String LOCAL_DATA_FILE_PATH = PACKAGE_NAME + "/datasource";
 }
